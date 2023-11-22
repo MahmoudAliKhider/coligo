@@ -1,5 +1,5 @@
 # coligo
-####  Server  ####
+##  Server  ##
 ## project-directory/
 ## |-- server/
 ###  |   |-- models/
