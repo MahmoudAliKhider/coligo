@@ -3,6 +3,7 @@ import './App.css'
 import { Header } from './components/Header'
 import { SignIn } from './pages/login'
 import { SignUp } from './pages/SignUp'
+import Navbar from './components/NavBar'
 
 function App() {
   
@@ -11,7 +12,7 @@ function App() {
     <div >
     <BrowserRouter>
       <Header />
-
+      <Navbar />
       <Routes>
         <Route path="/login" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
