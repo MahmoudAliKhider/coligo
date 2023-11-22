@@ -11,12 +11,12 @@
  ##### |   |   |-- quizRoutes.js
  ##### |   |   |-- authRoutes.js
 ### |   |-- controllers/
- #####|   |   |-- announcementController.js
- #####|   |   |-- quizController.js
- #####|   |   |-- authController.js
-##|   |-- server.js
+ ##### |   |   |-- announcementController.js
+ ##### |   |   |-- quizController.js
+ ##### |   |   |-- authController.js
+## |   |-- server.js
 |
-##|-- .env
-##|-- package.json
+## |-- .env
+## |-- package.json
 |-- ...
 
