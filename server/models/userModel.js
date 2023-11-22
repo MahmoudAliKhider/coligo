@@ -14,7 +14,10 @@ const userSchema = new mongoose.Schema(
             unique: true,
             lowercase: true,
         },
-        profileImg: String,
+        avatar: {
+            type: String,
+            default: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+        },
 
         password: {
             type: String,
@@ -24,7 +27,7 @@ const userSchema = new mongoose.Schema(
 
         role: {
             type: String,
-            enum: ["user", "manager", "admin"],
+            enum: ["user", "admin"],
             default: "user",
         },
 
