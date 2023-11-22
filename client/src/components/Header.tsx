@@ -1,9 +1,27 @@
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { RootState } from "../Redux/user/RootState";
 import { FaSearch, FaEnvelope, FaBell } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
+import { signOutUserStart, signOutUserSuccess, signOutUserFailure } from "../Redux/user/userSlice";
+
 export const Header = () => {
     const { currentUser } = useSelector((state: RootState) => state.user);
+    const dispatch = useDispatch();
+
+    const handleSignOut = async () => {
+        try {
+            dispatch(signOutUserStart());
+            const res = await fetch('/api/auth/signout');
+            const data = await res.json();
+            if (data.success === false) {
+                dispatch(signOutUserFailure(data.message));
+                return;
+            }
+            dispatch(signOutUserSuccess(data));
+        } catch (error) {
+            dispatch(signOutUserFailure(error));
+        }
+    };
 
     return (
         <header className="bg-slate-200 shadow-md rounded">
@@ -11,11 +29,11 @@ export const Header = () => {
                 <div className="text-left text-slate-800 font-bold text-l sm:text-xl mt-3">
                     <Link to="/">
                         {currentUser ? (
-                             <h1 className="font-bold text-l sm:text-xl flex flex-wrap ">
-                             <span className="text-slate-500">Welcome</span>
-                             
-                             <span className="text-slate-700 ml-3">{currentUser.name}</span>
-                         </h1>
+                            <h1 className="font-bold text-l sm:text-xl flex flex-wrap ">
+                                <span className="text-slate-500">Welcome</span>
+
+                                <span className="text-slate-700 ml-3">{currentUser.name}</span>
+                            </h1>
                         ) : (
                             <li className="text-slate-700 hover:underline hidden sm:inline ">Welcome</li>
                         )}
@@ -31,11 +49,11 @@ export const Header = () => {
                         </div>
 
                     </form>
-                    <FaBell className="text-slate-600" size={23}/>
-                    <FaEnvelope className="text-slate-600" size={23}/>
+                    <FaBell className="text-slate-600" size={23} />
+                    <FaEnvelope className="text-slate-600" size={23} />
                     <Link to={`/login`}>
                         {currentUser ? (
-                            <img src={currentUser.avatar} className="rounded-full w-7 h-7 object-cover" alt="profile" />
+                            <img onClick={handleSignOut} src={currentUser.avatar} className="rounded-full w-7 h-7 object-cover" alt="profile" />
                         ) : (
                             <div className="text-slate-700 hover:underline  font-bold">Sign In</div>
                         )}

@@ -7,7 +7,7 @@ interface User {
     email: string;
     avatar: string;
     role: string;
-   
+
 }
 
 interface UserState {
@@ -66,6 +66,6 @@ const userSlice = createSlice({
     }
 })
 
-export const { signInStart, signInSuccess, signInFailure,signUpStart,signUpSuccess,signUpFailure ,signOutUserFailure, signOutUserStart, signOutUserSuccess } = userSlice.actions
+export const { signInStart, signInSuccess, signInFailure, signUpStart, signUpSuccess, signUpFailure, signOutUserFailure, signOutUserStart, signOutUserSuccess } = userSlice.actions
 
 export default userSlice.reducer;

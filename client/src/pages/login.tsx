@@ -5,11 +5,10 @@ import { signInStart, signInSuccess, signInFailure } from "../Redux/user/userSli
 import { OAuth } from "../components/OAuth";
 import { RootState } from "../Redux/user/RootState";
 
-
 export const SignIn = () => {
     const [formData, setFormData] = useState<{ [key: string]: string }>({});
     const { loading, error } = useSelector((state: RootState) => state.user);
-    
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -32,7 +31,7 @@ export const SignIn = () => {
                 body: JSON.stringify(formData),
             });
             const data = await res.json();
-           
+
             if (data.user.success === false) {
                 dispatch(signInFailure(data.user.message));
                 return;
@@ -42,7 +41,7 @@ export const SignIn = () => {
         } catch (error) {
             dispatch(signInFailure(error || "An error occurred"));
         }
-        
+
     };
     return (
         <div className="p-3 max-w-lg mx-auto">
