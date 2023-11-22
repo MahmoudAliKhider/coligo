@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import { Header } from './components/Header'
 import { SignIn } from './pages/login'
+import { SignUp } from './pages/SignUp'
 
 function App() {
   
@@ -13,6 +14,7 @@ function App() {
 
       <Routes>
         <Route path="/login" element={<SignIn />} />
+        <Route path="/sign-up" element={<SignUp />} />
       </Routes>
     </BrowserRouter>
   </div>

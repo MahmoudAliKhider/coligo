@@ -20,7 +20,7 @@ exports.signup = asyncHandler(async (req, res, next) => {
 
     res
         .cookie("access_token", token, { httpOnly: true })
-        .status(201).json({ data: user });
+        .status(201).json({ user });
 });
 
 exports.login = asyncHandler(async (req, res, next) => {
