@@ -2,7 +2,7 @@ const express = require('express');
 const announcementController = require('../controllers/announcementController');
 const authService = require('../controllers/authController');
 
-const router = express.Router();
+const router = express.Router()
 
 router.post('/', authService.protect, authService.allowedTo('admin'), announcementController.createAnnouncement);
 router.get('/', authService.protect, announcementController.getAllAnnouncements);
