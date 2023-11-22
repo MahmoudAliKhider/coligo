@@ -1,12 +1,17 @@
 
 import { createSlice } from '@reduxjs/toolkit';
 
+interface User {
+    _id: string;
+    name: string;
+    email: string;
+    avatar: string;
+    role: string;
+   
+}
+
 interface UserState {
-    currentUser: {
-        avatar: string;
-        name: string;
-        email: string;
-    } | null;
+    currentUser: User | null;
     error: string | null;
     loading: boolean;
 }

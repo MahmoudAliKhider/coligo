@@ -35,7 +35,7 @@ exports.login = asyncHandler(async (req, res, next) => {
     delete user._doc.password;
     res
         .cookie("access_token", token, { httpOnly: true })
-        .status(200).json({ data: user });
+        .status(200).json({ user });
 });
 
 exports.google = async (req, res, next) => {

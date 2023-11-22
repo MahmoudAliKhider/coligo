@@ -5,14 +5,17 @@ import { FaSearch, FaEnvelope, FaBell } from 'react-icons/fa';
 export const Header = () => {
     const { currentUser } = useSelector((state: RootState) => state.user);
 
-
     return (
         <header className="bg-slate-200 shadow-md rounded">
             <div className="flex justify-between max-w-6xl mx-auto p-3 ">
                 <div className="text-left text-slate-800 font-bold text-l sm:text-xl mt-3">
                     <Link to="/">
                         {currentUser ? (
-                            <h3 className="text-slate-700  hover:underline ">Welcome{currentUser.name}</h3>
+                             <h1 className="font-bold text-l sm:text-xl flex flex-wrap ">
+                             <span className="text-slate-500">Welcome</span>
+                             
+                             <span className="text-slate-700 ml-3">{currentUser.name}</span>
+                         </h1>
                         ) : (
                             <li className="text-slate-700 hover:underline hidden sm:inline ">Welcome</li>
                         )}
