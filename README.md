@@ -1,8 +1,8 @@
 # coligo
 ####  Server  ####
 ## project-directory/
-# |-- server/
-# |   |-- models/
+### |-- server/
+|   |-- models/
 |   |   |-- announcementModel.js
 |   |   |-- quizModel.js
 |   |   |-- authModel.js
