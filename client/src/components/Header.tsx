@@ -24,13 +24,13 @@ export const Header = () => {
     };
 
     return (
-        <header className="bg-slate-200 shadow-md rounded">
+        <header className="bg-slate-200 shadow-md rounded  ">
             <div className="flex justify-between max-w-6xl mx-auto p-3 ">
-                <div className="text-left text-slate-800 font-bold text-l sm:text-xl mt-3">
+                <div className=" text-slate-800 font-bold text-l sm:text-xl mt-4 ml-28">
                     <Link to="/">
                         {currentUser ? (
                             <h1 className="font-bold text-l sm:text-xl flex flex-wrap ">
-                                <span className="text-slate-500">Welcome</span>
+                                <span className="text-slate-500 ">Welcome</span>
 
                                 <span className="text-slate-700 ml-3">{currentUser.name}</span>
                             </h1>
@@ -39,7 +39,6 @@ export const Header = () => {
                         )}
                     </Link>
                 </div>
-
 
                 <div className="flex gap-4 text-slate-800 items-center">
                     <form className="bg-slate-100 p-3 rounded-full flex flex-wrap items-center">
