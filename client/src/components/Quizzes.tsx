@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
-import  quize  from '../assets/images/quiz.jpg'
+import quize from '../assets/images/quiz.jpg';
+import { Link } from 'react-router-dom';
+
 interface Quiz {
     _id: string;
     question: string;
@@ -48,7 +50,10 @@ export const Quizzes = () => {
             {quizzes && quizzes.length > 0 && (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-2 ">
                     <div className="bg-white rounded-2xl overflow-hidden shadow-md mb-4 p-8 w-[300px]">
+                        <Link to='/schedule'>
                         <p className='text-slate-700 font-bold relative ml-[230px] cursor-pointer'>All</p>
+
+                        </Link>
 
                         {quizzes.slice(0, 2).map((quiz, index) => (
                             <div key={quiz._id} className="mb-4">
@@ -56,7 +61,7 @@ export const Quizzes = () => {
                                 {/* <p className="text-gray-700 mb-2">Options: {quiz.options.join(', ')}</p> */}
                                 {/* <p className="text-gray-700 mb-2">Correct Answer: {quiz.correctAnswer}</p> */}
 
-                                <img src={quize} alt='quize'/>
+                                <img src={quize} alt='quize' />
                                 <p className="text-gray-700">Exam Time: {quiz.examTime}</p>
                                 <button className='border border-slate-800 mt-3 w-[250px] p-3 pl-5 pr-5 text-slate-900 rounded-xl hover:bg-slate-800 hover:text-white '>
                                     Start Quize{index + 1}

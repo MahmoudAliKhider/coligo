@@ -42,7 +42,7 @@ const Navbar = () => {
                     </li>
                 </Link>
 
-                <Link to='/courses'>
+                {/* <Link to='/courses'> */}
                     <li
                         className={`p-4 mb-5 rounded transition duration-300 hover:bg-white hover:text-slate-500  cursor-pointer ${selectedItem === 'Courses' ? 'border bg-white text-slate-600' : ''
                             }`}
@@ -51,9 +51,9 @@ const Navbar = () => {
                         <FaBook className="inline-block mr-7" size={23} />
                         Courses
                     </li>
-                </Link>
+                {/* </Link> */}
 
-                <Link to='/gradebook'>
+                {/* <Link to='/gradebook'> */}
                     <li
                         className={`p-4 mb-5 rounded transition duration-300 hover:bg-white hover:text-slate-500  cursor-pointer ${selectedItem === 'Gradebook' ? 'border bg-white text-slate-600' : ''
                             }`}
@@ -62,9 +62,9 @@ const Navbar = () => {
                         <FaTable className="inline-block mr-6" size={23} />
                         Gradebook
                     </li>
-                </Link>
+                {/* </Link> */}
 
-                <Link to='/performance'>
+                {/* <Link to='/performance'> */}
                     <li
                         className={`p-4 mb-5 rounded transition duration-300 hover:bg-white hover:text-slate-500  cursor-pointer ${selectedItem === 'Performance' ? 'border bg-white text-slate-600' : ''
                             }`}
@@ -73,7 +73,7 @@ const Navbar = () => {
                         <FaChartBar className="inline-block mr-6" size={23} />
                         Performance
                     </li>
-                </Link>
+                {/* </Link> */}
 
                 <Link to='/announcement'>
                     <li

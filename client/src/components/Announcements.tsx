@@ -1,5 +1,5 @@
-
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 interface Announcement {
     _id: string;
@@ -63,8 +63,11 @@ export const Announcements = () => {
             {announcements && announcements.length > 0 && (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-2">
                     <div className="bg-white  rounded-md overflow-hidden shadow-md mb-4 p-8 w-[800px]">
+                        <Link to="/announcement">
                         <p className='text-slate-700 font-bold relative ml-[700px] cursor-pointer'>All</p>
-                        {announcements.slice(0, 3).map((announcement) => (
+
+                        </Link>
+                        {announcements.slice(0, 4).map((announcement) => (
                             <div key={announcement._id} className="mb-4 flex">
                                 <div className="flex items-center">
                                     <img src={announcement.userAvatar} alt="User Avatar" className="w-8 h-8 rounded-full mr-5 " />
