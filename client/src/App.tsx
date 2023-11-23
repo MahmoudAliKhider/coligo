@@ -6,6 +6,7 @@ import { SignUp } from './pages/SignUp'
 // import { Navbar } from './components/NavBar'
 import { PrivateRoute } from "./components/PrivateRoute";
 import { Dashboard } from './pages/Dashboard'
+import Schedule from './pages/Schedule'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
           </Route> */}
           <Route path="/dashboard/*" element={<PrivateRoute />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/schedule" element={<Schedule />} />
         </Routes>
       </BrowserRouter>
     </div>
