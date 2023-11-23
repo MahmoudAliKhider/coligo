@@ -1,6 +1,7 @@
 import { FaHome, FaCalendar, FaBook, FaTable, FaChartBar, FaBullhorn } from 'react-icons/fa';
+import { Link } from "react-router-dom";
 
-export const Navbar = () => {
+ const Navbar = () => {
     return (
         <div className="bg-gray-800 p-6  shadow-md rounded w-60 h-screen items-center relative z-10 bottom-20">
 
@@ -8,11 +9,14 @@ export const Navbar = () => {
                 <h2 className=' text-white font-bold text-xl sm:text-2xl mt-6' >Coligo</h2>
             </div>
 
-            <ul className="text-white text-left mt-6 space-y-9 font-bold  sm:text-l ">
+            <ul className="text-white text-left mt-11 space-y-9 font-bold  sm:text-l ">
+                <Link to='/dashboard'>
                 <li className=" p-4 rounded transition duration-300  hover:bg-white hover:text-slate-500  cursor-pointer">
                     <FaHome className="inline-block mr-6 " size={23} />
                     Dashboard
                 </li>
+                </Link>
+               
 
                 <li className=" p-4 rounded transition duration-300  hover:bg-white hover:text-slate-500  cursor-pointer">
                     <FaCalendar className="inline-block mr-6" size={23} />
@@ -40,3 +44,4 @@ export const Navbar = () => {
     );
 };
 
+export default Navbar

@@ -3,8 +3,9 @@ import './App.css'
 import { Header } from './components/Header'
 import { SignIn } from './pages/login'
 import { SignUp } from './pages/SignUp'
-import { Navbar } from './components/NavBar'
+// import { Navbar } from './components/NavBar'
 import { PrivateRoute } from "./components/PrivateRoute";
+import { Dashboard } from './pages/Dashboard'
 
 function App() {
 
@@ -16,10 +17,11 @@ function App() {
         <Routes>
           <Route path="/login" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
-          <Route element={<PrivateRoute />}>
-            <Route path="/" element={<Navbar />} />
-            
-          </Route>
+          {/* <Route element={<PrivateRoute />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Route> */}
+          <Route path="/dashboard/*" element={<PrivateRoute />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
     </div>

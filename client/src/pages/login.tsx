@@ -37,7 +37,7 @@ export const SignIn = () => {
                 return;
             }
             dispatch(signInSuccess(data.user));
-            navigate('/');
+            navigate('/dashboard');
         } catch (error) {
             dispatch(signInFailure(error || "An error occurred"));
         }

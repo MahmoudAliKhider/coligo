@@ -36,7 +36,7 @@ export const SignUp = () => {
                 return;
             }
             dispatch(signUpSuccess(data.user));
-            navigate('/')
+            navigate('/dashboard')
         } catch (err) {
             dispatch(signUpFailure(error || "An error occurred"));
         }
@@ -60,7 +60,7 @@ export const SignUp = () => {
 
             <div className='flex gap-2 mt-2'>
                 <p>Have an account?</p>
-                <Link to={"/"}>
+                <Link to={"/login"}>
                     <span className='text-blue-600'>Sign in</span>
                 </Link>
             </div>
