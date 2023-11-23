@@ -1,7 +1,7 @@
-// Dashboard.jsx
 import NavBar from '../components/NavBar';
 import { Container, Col, Card } from 'react-bootstrap';
-import image from '../assets/images/istockphoto-818576380-612x612.jpg'
+import image from '../assets/images/istockphoto-818576380-612x612.jpg';
+
 export const Dashboard = () => {
     return (
         <Container fluid>
@@ -35,7 +35,7 @@ export const Dashboard = () => {
 
                             <br />
                             
-                            
+
                         </div>
                     </div>
                 </Col>
