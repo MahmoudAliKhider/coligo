@@ -29,14 +29,22 @@ exports.createAnnouncement = async (req, res) => {
 
     await newAnnouncement.save();
 
-    await User.findByIdAndUpdate(user._id, { $set: { avatar: user.avatar } });
-  //  console.log(user.avatar)
-    res.json(newAnnouncement);
+    // Fetch the user again to include the avatar
+    const updatedUser = await User.findById(user._id);
+
+    res.json({
+      title: newAnnouncement.title,
+      content: newAnnouncement.content,
+      createdBy: newAnnouncement.createdBy,
+      avatar: updatedUser.avatar, // Include avatar in the response
+      _id: newAnnouncement._id,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
+
 
 exports.getAnnouncementById = async (req, res) => {
   const { announcementId } = req.params;

@@ -23,6 +23,7 @@ mongoose.connect(process.env.MONGO_URL, {
 
 app.use("/api/auth", require('./routes/authRoutes'));
 app.use("/api/quiz", require('./routes/quizRoutes'));
+app.use("/api/users", require('./routes/userRoutes'));
 app.use("/api/announcements", require('./routes/announcementRoutes'));
 
 app.use((err, req, res, next) => {
