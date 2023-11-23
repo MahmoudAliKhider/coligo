@@ -13,6 +13,10 @@ const announcementSchema = new mongoose.Schema({
     type: String,
     required: [true, "Content is required"],
   },
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User', 
+  },
 });
 
 const Announcement = mongoose.model('Announcement', announcementSchema);

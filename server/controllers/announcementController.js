@@ -1,4 +1,5 @@
 const Announcement = require('../models/announcementModel');
+const User = require("../models/userModel");
 
 exports.getAllAnnouncements = async (req, res) => {
   try {
@@ -14,8 +15,22 @@ exports.createAnnouncement = async (req, res) => {
   const { title, content } = req.body;
 
   try {
-    const newAnnouncement = new Announcement({ title, content });
+    const user = req.user; 
+
+    if (!user) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    const newAnnouncement = new Announcement({
+      title,
+      content,
+      createdBy: user._id, 
+    });
+
     await newAnnouncement.save();
+
+    await User.findByIdAndUpdate(user._id, { $set: { avatar: user.avatar } });
+  //  console.log(user.avatar)
     res.json(newAnnouncement);
   } catch (error) {
     console.error(error);

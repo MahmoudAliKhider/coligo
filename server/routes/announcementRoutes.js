@@ -4,10 +4,10 @@ const authService = require('../controllers/authController');
 
 const router = express.Router()
 
-router.post('/', authService.protect, authService.allowedTo('admin'), announcementController.createAnnouncement);
+router.post('/', authService.protect, announcementController.createAnnouncement);
 router.get('/', authService.protect, announcementController.getAllAnnouncements);
 router.get('/:announcementId', authService.protect, announcementController.getAnnouncementById);
-router.put('/:announcementId', authService.protect,authService.allowedTo('admin'), announcementController.updateAnnouncement);
-router.delete('/:announcementId', authService.protect, authService.allowedTo('admin'), announcementController.deleteAnnouncement);
+router.put('/:announcementId', authService.protect, announcementController.updateAnnouncement);
+router.delete('/:announcementId', authService.protect, announcementController.deleteAnnouncement);
 
 module.exports = router;
