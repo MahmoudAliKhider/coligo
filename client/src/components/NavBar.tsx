@@ -11,7 +11,7 @@ const Navbar = () => {
     };
 
     return (
-        <div className="bg-gray-800 p-6  shadow-md rounded w-60 h-screen items-center relative z-10 bottom-20">
+        <div className="bg-gray-800 p-6  shadow-md rounded w-60  items-center h-full relative z-10 bottom-24">
 
             <div className='  text-center sm:text-xl'>
                 <h2 className=' text-white font-bold text-xl sm:text-2xl mt-6' >Coligo</h2>
