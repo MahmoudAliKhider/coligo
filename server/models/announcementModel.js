@@ -15,9 +15,9 @@ const announcementSchema = new mongoose.Schema({
   },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User', 
+    ref: 'User',
   },
-});
+}, { timestamps: true });
 
 const Announcement = mongoose.model('Announcement', announcementSchema);
 
