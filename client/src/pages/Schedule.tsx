@@ -23,7 +23,7 @@ const Schedule = () => {
     const [selectedAnswer, setSelectedAnswer] = useState('');
     const [showResults, setShowResults] = useState(false);
     const isCorrectAnswer = selectedAnswer === selectedQuiz?.correctAnswer;
-
+    
     const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSelectedAnswer(event.target.value);
     };

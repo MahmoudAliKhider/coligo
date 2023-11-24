@@ -24,7 +24,7 @@ function App() {
           <Route element={<PrivateRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/schedule" element={<Schedule />} />
-            {/* <Route path="/schedule/:quizId" element={<Schedule />} /> */}
+            <Route path="/schedule/:quizId" element={<Schedule />} />
             <Route path="/announcement" element={<Announcement />} />
           </Route>
 
