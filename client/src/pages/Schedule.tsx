@@ -1,36 +1,31 @@
-
 import NavBar from '../components/NavBar';
 import { Container, Col } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import quize from '../assets/images/quiz.jpg';
-// import { Link } from 'react-router-dom';
-// import QuizDetail from '../components/QuizDetail';
 
-interface Quiz {
+interface Option {
     _id: string;
-    question: string;
-    options: string[];
-    correctAnswer: string;
+    optionText: string;
+    isCorrect: boolean;
+}
+
+interface Question {
+    _id: string;
+    questionText: string;
+    options: Option[];
     examTime: string;
 }
 
-const Schedule = () => {
+interface Quiz {
+    _id: string;
+    questions: Question[];
+}
 
+const Schedule = () => {
     const [quizzes, setQuizzes] = useState<Quiz[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [selectedQuiz, setSelectedQuiz] = useState<Quiz | null>(null);
-    const [selectedAnswer, setSelectedAnswer] = useState('');
-    const [showResults, setShowResults] = useState(false);
-    const isCorrectAnswer = selectedAnswer === selectedQuiz?.correctAnswer;
-    
-    const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSelectedAnswer(event.target.value);
-    };
-
-    const handleShowResults = () => {
-        setShowResults(true);
-    };
 
     const handleShowQuiz = async (quizId: string) => {
         try {
@@ -46,7 +41,6 @@ const Schedule = () => {
             console.log(error);
         }
     };
-
 
     useEffect(() => {
         const fetchQuizzes = async () => {
@@ -73,7 +67,6 @@ const Schedule = () => {
         fetchQuizzes();
     }, []);
 
-
     return (
         <Container fluid>
             <div className='py-3 flex'>
@@ -93,65 +86,48 @@ const Schedule = () => {
                                 <div className="flex flex-wrap gap-5 mt-2">
                                     {quizzes.map((quiz, index) => (
                                         <div key={quiz._id} className="bg-white rounded-2xl overflow-hidden shadow-md mb-4 p-8 w-[300px] ml-5">
-
                                             <img src={quize} alt='quize' />
-
-                                            <p className="text-gray-700">Exam Time: {quiz.examTime}</p>
-                                            {/* <Link to={`/schedule/${quiz._id}`}> */}
+                                            <p className="text-gray-700">Exam Time: {quiz.questions[0]?.examTime}</p>
                                             <button
                                                 className='border border-slate-800 mt-3 w-[250px] p-3 pl-5 pr-5 text-slate-900 rounded-xl hover:bg-slate-800 hover:text-white'
                                                 onClick={() => handleShowQuiz(quiz._id)}
                                             >
-                                                Start Quize {index + 1}
+                                                Start Quiz {index + 1}
                                             </button>
-
-                                            {/* </Link> */}
-
                                         </div>
                                     ))}
                                 </div>
                             )}
 
-                            <div className="bg-white rounded-md overflow-hidden shadow-md mb-4 p-8 w-[800px]">
-                                <h2 className="text-xl font-bold text-gray-900 mb-2">
-                                    Question: {selectedQuiz?.question}
-                                </h2>
+                            {selectedQuiz && (
+                                <div className="bg-white rounded-md overflow-hidden shadow-md mb-4 p-8 w-[800px]">
+                                    <h2 className="text-xl font-bold text-gray-900 mb-2">
+                                        Quiz Details for {selectedQuiz._id}
+                                    </h2>
 
-                                <form>
-                                    {selectedQuiz?.options.map((option) => (
-                                        <div key={option} className="flex items-center mb-2">
-                                            <input
-                                                type="radio"
-                                                id={option}
-                                                name="quizOption"
-                                                value={option}
-                                                checked={selectedAnswer === option}
-                                                onChange={handleOptionChange}
-                                            />
-                                            <label htmlFor={option} className="ml-2">
-                                                {option}
-                                            </label>
+                                    {selectedQuiz.questions.map((question, questionIndex) => (
+                                        <div key={question._id} className="mb-4">
+                                            <h3 className="text-lg font-bold text-gray-700 mb-2">
+                                                Question {questionIndex + 1}: {question.questionText}
+                                            </h3>
+
+                                            <ul className="list-disc ml-6">
+                                                {question.options.map((option) => (
+                                                    <li
+                                                        key={option._id}
+                                                        className={`mb-2 ${option.isCorrect ? 'text-green-500 font-bold' : 'text-gray-800'
+                                                            }`}
+                                                    >
+                                                        {option.optionText} {option.isCorrect && '(Correct)'}
+                                                    </li>
+                                                ))}
+                                            </ul>
                                         </div>
                                     ))}
-                                </form>
 
-                                <button
-                                    className="bg-green-500 text-white p-2 rounded-md mt-4"
-                                    onClick={handleShowResults}
-                                >
-                                    Submit
-                                </button>
+                                </div>
+                            )}
 
-                                {showResults && (
-                                    <div className="mt-4">
-                                        <p>Your selected answer: {selectedAnswer}</p>
-                                        <p>Correct answer: {selectedQuiz?.correctAnswer}</p>
-                                        <p>{isCorrectAnswer ? 'Correct!' : 'Incorrect!'}</p>
-                                    </div>
-                                )}
-                            </div>
-
-                            {/* <QuizDetail /> */}
 
                         </div>
                     </div>
@@ -161,4 +137,4 @@ const Schedule = () => {
     );
 };
 
-export default Schedule
+export default Schedule;
